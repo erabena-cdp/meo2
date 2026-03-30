@@ -1,4 +1,7 @@
 package com.hua.yes.domain;
+
+import com.hua.yes.domain.Users;
+import com.hua.yes.domain.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +18,17 @@ public class UserController {
     }
 
     @GetMapping
-    public List<Users> getUsers() {
-        return userRepository.findAllByFNameIsNotNull();
+    public List<Users> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @PostMapping
     public Users createUser(@RequestBody Users user) {
         return userRepository.save(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {  // Note: Long, not String
+        userRepository.deleteById(id);
     }
 }

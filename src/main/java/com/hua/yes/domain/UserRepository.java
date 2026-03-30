@@ -1,9 +1,9 @@
 package com.hua.yes.domain;
 
+import com.hua.yes.domain.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface UserRepository extends JpaRepository<Users, Long> {
-    List<Users> findAllByFNameIsNotNull();
+@Repository
+public interface UserRepository extends JpaRepository<Users, Long> {  // Note: Long, not String
 }
